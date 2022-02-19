@@ -5,6 +5,8 @@ Parametrized objects stores a unmutable collections of parameters. Parameters
 can be accessed as properties but cannot be set. Here is an example,
 
 ```python
+from paramobject import ParametrizedObject, Parameter, parameter
+
 class Cylinder(ParametrizedObject):
 
   # those two parameters are stored in the object
