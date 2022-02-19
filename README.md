@@ -67,6 +67,7 @@ print(cylinder.with_length(max_length=20).length) # prints 20
 
 
 class Cuboid(ParametrizedObject):
+
   size = Parameter(default=(1, 1, 1))
 
 
@@ -75,6 +76,7 @@ class Hammer(ParametrizedObject):
   # parametrized object can be nested
   handle = Cylinder(radius=1, lenght=20)
   head = Cuboid(size=(2, 2, 5))
+
 
 # in this case, the withers of contained parametrized object returns directly a 
 # copy of the owning object.
