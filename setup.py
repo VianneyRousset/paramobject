@@ -12,7 +12,7 @@ setuptools.setup(
     license='Apache-2.0',
     author='Vianney Rousset',
     author_email='vianney@rousset.com',
-    description='An easy way to create parametrized object in Python.'
+    description='An easy way to create parametrized object in Python.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='github.com/VianneyRousset/paramobject',
