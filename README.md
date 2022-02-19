@@ -7,6 +7,7 @@ can be accessed as properties but cannot be set. Here is an example,
 ```python
 from paramobject import ParametrizedObject, Parameter, parameter
 
+
 class Cylinder(ParametrizedObject):
 
   # those two parameters are stored in the object
@@ -35,7 +36,7 @@ class Cylinder(ParametrizedObject):
   @radius.caster
   def caster(self, default, **kwargs):
 
-      radius = kwargs.get('radius', kwargs)
+      radius = kwargs.get('radius', default)
 
       if 'diameter' in kwargs:
           radius = kwargs['diameter'] / 2
@@ -56,6 +57,11 @@ print(cylinder.diameter) # prints 20
 long_cylinder = cylinder.with_length(1000)
 print(cylinder.length) # prints 1000
 
+# more generally, multiple parameters can be set at once using with_params()
+another_cylinder = cylinder.with_params(diameter=2, length=5)
+print(another_cylinder.diameter) # prints 2
+print(another_cylinder.length) # prints 5
+
 # custom wither can be defined to allow more complex operations
 print(cylinder.with_length(max_length=20).length) # prints 20
 
@@ -65,16 +71,15 @@ class Cuboid(ParametrizedObject):
 
 
 class Hammer(ParametrizedObject):
+
+  # parametrized object can be nested
   handle = Cylinder(radius=1, lenght=20)
   head = Cuboid(size=(2, 2, 5))
 
-
-# parametrized object can be nested
+# in this case, the withers of contained parametrized object returns directly a 
+# copy of the owning object.
 hammer = Hammer()
 print(hammer.handle.length) # prints 20
-
-# in this case, contained parametrized object withers directly returns a 
-# copy of the owning object.
 long_hammer = hammer.handle.with_length(100)
 print(long_hammer.handle.length) # prints 100
 ```
