@@ -102,8 +102,10 @@ class Parameter:
         ...     def foo(self):
         ...         return 42
         '''
-        self.getter_func = getter_func
-        return self
+
+        return Parameter(getter_func, stored=self.stored, default=self.default,
+                         name=self.name)
+
 
     def wither(self, wither_func=None):
         '''
