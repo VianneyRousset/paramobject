@@ -109,8 +109,7 @@ class Parameter:
         ...         return self.with_params(foo=v)
         '''
 
-        self.wither = paramobject.ParameterWither(self, wither_func)
-        return self.wither
+        return paramobject.ParameterWither(self, wither_func)
 
     def caster(self, caster_func=None):
         '''
@@ -143,5 +142,4 @@ class Parameter:
         if not self.stored:
             raise ValueError('A non-stored parameter cannot have a caster.')
 
-        self.caster = paramobject.ParameterCaster(self, caster_func)
-        return self.caster
+        return paramobject.ParameterCaster(self, caster_func)
