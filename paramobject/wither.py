@@ -82,7 +82,7 @@ class ParameterWither: # pylint: disable=too-few-public-methods
 
             # use current value if none is given
             if value is None:
-                value = instance.value
+                value = getattr(instance, self.parameter.name)
 
             return instance.with_params({self.parameter.name: value})
 
