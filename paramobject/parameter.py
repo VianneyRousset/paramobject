@@ -85,6 +85,23 @@ class Parameter:
 
         return value
 
+    def getter(self, getter_func=None):
+        '''
+        Decorator to (re)define the getter function.
+
+        Usage:
+
+        >>> class Example(ParametrizedObject):
+        ...
+        ...     foo = Parameter()
+        ...
+        ...     @foo.getter
+        ...     def foo(self):
+        ...         return 42
+        '''
+        self.getter_func = getter_func
+        return self
+
     def wither(self, wither_func=None):
         '''
         Decorator to create a wither.
