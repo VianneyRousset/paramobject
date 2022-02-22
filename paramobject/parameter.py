@@ -85,6 +85,9 @@ class Parameter:
 
         return value
 
+    def __set__(self, instance, value):
+        raise AttributeError('Cannot set parameter.')
+
     def getter(self, getter_func=None):
         '''
         Decorator to (re)define the getter function.
