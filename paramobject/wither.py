@@ -67,7 +67,7 @@ class ParameterWither: # pylint: disable=too-few-public-methods
         Otherwise, a default wither function is returned.
         '''
 
-        def default_wither_func(instance, value):
+        def default_wither_func(instance, value=None):
             '''
             Default wither function.
 
@@ -79,6 +79,10 @@ class ParameterWither: # pylint: disable=too-few-public-methods
             if self.parameter.name is None:
                 raise RuntimeError('A nameless parameter cannot use the '
                                    'default wither function')
+
+            # use current value if none is given
+            if value is None:
+                value = instance.value
 
             return instance.with_params({self.parameter.name: value})
 
