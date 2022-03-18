@@ -55,7 +55,7 @@ print(cylinder.diameter) # prints 20
 # parameter value cannot be directly modified. A copy of the object with
 # a new parameter value must be created using withers:
 long_cylinder = cylinder.with_length(1000)
-print(cylinder.length) # prints 1000
+print(long_cylinder.length) # prints 1000
 
 # more generally, multiple parameters can be set at once using with_params()
 another_cylinder = cylinder.with_params(diameter=2, length=5)
