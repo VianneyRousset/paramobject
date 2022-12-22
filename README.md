@@ -4,12 +4,6 @@ An easy way to create parametrized object in Python.
 Parametrized objects stores a unmutable collections of parameters. Parameters
 can be accessed as properties but cannot be set. Here is an example,
 
-## Installation
-```sh
-pip install --user git+https://github.com/VianneyRousset/paramobject
-```
-
-## Usage
 ```python
 from paramobject import ParametrizedObject, Parameter, parameter
 
@@ -40,7 +34,7 @@ class Cylinder(ParametrizedObject):
   # custom caster should be defined to retrieve the stored parameter
   # value from deduced parameter.
   @radius.caster
-  def caster(self, default, **kwargs):
+  def cast_radius(self, default, **kwargs):
 
       radius = kwargs.get('radius', default)
 
@@ -61,7 +55,7 @@ print(cylinder.diameter) # prints 20
 # parameter value cannot be directly modified. A copy of the object with
 # a new parameter value must be created using withers:
 long_cylinder = cylinder.with_length(1000)
-print(long_cylinder.length) # prints 1000
+print(cylinder.length) # prints 1000
 
 # more generally, multiple parameters can be set at once using with_params()
 another_cylinder = cylinder.with_params(diameter=2, length=5)
@@ -80,8 +74,8 @@ class Cuboid(ParametrizedObject):
 class Hammer(ParametrizedObject):
 
   # parametrized object can be nested
-  handle = Cylinder(radius=1, lenght=20)
-  head = Cuboid(size=(2, 2, 5))
+  handle = Parameter(default=Cylinder(radius=1, lenght=20))
+  head = Parameter(default=Cuboid(size=(2, 2, 5)))
 
 
 # in this case, the withers of contained parametrized object returns directly a 
