@@ -129,9 +129,6 @@ class ParametrizedObject(ABC, metaclass=ParametrizedObjectMeta):
         copy.binding = None
         return copy
 
-    def __hash__(self):
-        return hash((self.__class__, self.params_storage))
-
 
 @dataclass
 class ParametrizedObjectBinding:

@@ -62,9 +62,6 @@ class StaticDict(MutableMapping):
     def __len__(self):
         return len(self.content)
 
-    def __hash__(self):
-        return hash(tuple(self.items()))
-
 
 class ParametersView(Mapping):
     '''
