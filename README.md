@@ -1,6 +1,13 @@
 # paramobject
 An easy way to create parametrized object in Python.
 
+## Installation
+```bash
+pip install git+https://github.com/VianneyRousset/paramobject
+```
+
+## Getting started
+
 Parametrized objects stores a unmutable collections of parameters. Parameters
 can be accessed as properties but cannot be set. Here is an example,
 
